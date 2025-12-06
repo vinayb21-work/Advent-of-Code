@@ -1,10 +1,11 @@
 from pathlib import Path
 
 def isValidId(id):
-    if len(id) % 2 != 0:
-        return True
-
-    return id[:len(id) // 2] * 2 != id 
+    n = len(id)
+    for i in range(1, n // 2 + 1):
+        if id[:i] * (n // i) == id:
+            return False
+    return True
 
 idRanges = Path("input.txt").read_text().split(",")
 invalidIds = []
